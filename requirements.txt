@@ -1,10 +1,9 @@
-Flask
-gunicorn
-requests
-parsedatetime
+Flask==3.0.2
+gunicorn==21.2.0
 jsonpatch==1.32
 jsonpointer==2.0
 jsonschema==4.10.3
-base64
+requests
+parsedatetime
 os
 threading
