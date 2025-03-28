@@ -5,5 +5,3 @@ jsonpointer==2.0
 jsonschema==4.10.3
 requests
 parsedatetime
-os
-threading
