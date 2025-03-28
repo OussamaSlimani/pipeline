@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Talend Artifact Monitor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .status {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      .running {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .stopped {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .log {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        height: 300px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+      }
+      .log-entry {
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+      }
+      .buttons {
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 15px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .last-trigger {
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Talend Artifact Monitor</h1>
+
+    <div class="status {{ 'running' if status == 'Running' else 'stopped' }}">
+      Status: {{ status }}
+    </div>
+
+    {% if last_trigger %}
+    <div class="last-trigger">Last pipeline trigger: {{ last_trigger }}</div>
+    {% endif %}
+
+    <div class="buttons">
+      <a href="/start"><button>Start Monitoring</button></a>
+      <a href="/stop"><button>Stop Monitoring</button></a>
+    </div>
+
+    <h2>Activity Log</h2>
+    <div class="log">
+      {% for entry in logs %}
+      <div class="log-entry">{{ entry }}</div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
